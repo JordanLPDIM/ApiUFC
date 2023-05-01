@@ -113,7 +113,7 @@ exports.getAll = (req, res, next) => {
   };
 
 exports.getById = [paramIdValidationRule(), checkValidity, (req, res, next) => {
-    Fighter.findById(req.params.id).exec(function (err, result) {
+    Fighter.findById(req.params.id).populate("category").exec(function (err, result) {
         if (err) {
           return res.status(500).json(err);
         }
